@@ -1,0 +1,17 @@
+// booking.proto
+syntax = "proto3";
+
+package com.example.gateway_service.grpc.booking;
+
+service BookingService {
+  rpc GetBooking(GetBookingRequest) returns (BookingResponse) {}
+}
+
+message GetBookingRequest {
+  string bookingId = 1;
+}
+
+message BookingResponse {
+  string description = 1;
+  int32 status = 2;
+}

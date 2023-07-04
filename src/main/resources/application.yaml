@@ -1,0 +1,19 @@
+spring:
+  main:
+    web-application-type: reactive
+  cloud:
+    gateway:
+      set-status:
+        original-status-header-name: original-http-status
+      routes:
+        - id: identity-service-route
+          uri: http://localhost:8081
+          predicates:
+            - Path=/identity/**
+            - Method=GET,POST
+        - id: booking-service-route
+          uri: http://localhost:8082
+          predicates:
+            - Path=/booking/**
+jwt:
+  secret: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c
